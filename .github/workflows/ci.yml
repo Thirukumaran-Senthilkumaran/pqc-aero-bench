@@ -16,20 +16,44 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         python-version: ["3.10", "3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v5
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
+          cache: pip
 
-      - name: Install dependencies
+      - name: Diagnostics - environment
+        shell: bash
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements-dev.txt
+          set -x
+          python --version
+          python -c "import sys, platform; print('platform:', platform.platform()); print('machine:', platform.machine())"
+          pip --version
 
-      - name: Run tests
-        run: pytest -ra
+      - name: Install package (editable) + dev deps
+        shell: bash
+        run: |
+          set -x
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          pip list
+
+      - name: Diagnostics - import smoke test
+        shell: bash
+        run: |
+          set -x
+          python -c "from quantcrypt.kem import MLKEM_512; print('quantcrypt import OK')"
+          python -c "from quantcrypt.dss import MLDSA_44; print('quantcrypt dss import OK')"
+          python -c "from cryptography.hazmat.primitives.asymmetric import ed25519; print('cryptography import OK')"
+          python -c "from pqc_aero_bench import datalinks, algorithms; print('package import OK')"
+
+      - name: Run pytest (verbose)
+        shell: bash
+        run: python -m pytest -ra -v
 
       - name: Smoke-run the CLI
+        shell: bash
         run: python -m pqc_aero_bench run --quick --no-plots -o results/ci-run
