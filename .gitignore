@@ -37,3 +37,8 @@ desktop.ini
 # Benchmark output (keep curated samples in results/, ignore ad-hoc runs)
 results/runs/
 *.log
+
+# Scratch / debugging
+ci-log*.txt
+ci-log*.zip
+ci-logs.*
