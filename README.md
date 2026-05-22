@@ -1,5 +1,9 @@
 # pqc-aero-bench
 
+[![ci](https://github.com/Thirukumaran-Senthilkumaran/pqc-aero-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/Thirukumaran-Senthilkumaran/pqc-aero-bench/actions/workflows/ci.yml)
+[![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 **Post-quantum cryptography, measured against the hard physical limits of civil-aviation datalinks.**
 
 A reproducible benchmark suite that scores every NIST-standardised post-quantum primitive
