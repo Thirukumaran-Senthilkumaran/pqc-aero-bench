@@ -1,0 +1,1314 @@
+{
+  "environment": {
+    "tool": "pqc-aero-bench",
+    "version": "0.1.0",
+    "python": "3.12.9",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "generated_utc": "2026-05-22T00:54:15+00:00"
+  },
+  "datalinks": [
+    {
+      "name": "ACARS-VHF",
+      "max_payload_bytes": 220,
+      "net_bitrate_bps": 2400.0,
+      "one_way_latency_ms": 1500.0,
+      "standard": "ARINC 618 / 620",
+      "category": "narrowband",
+      "notes": "Plain-text character-oriented air-ground messaging. Payload ceiling is the operational soft limit observed on Block 1; physical limit is higher but multi-block messages are fragmented by the CSP."
+    },
+    {
+      "name": "VDL-Mode-2",
+      "max_payload_bytes": 1023,
+      "net_bitrate_bps": 31500.0,
+      "one_way_latency_ms": 800.0,
+      "standard": "ARINC 631 / ICAO Doc 9776",
+      "category": "narrowband",
+      "notes": "Primary VHF datalink for ATN/OSI and ATN/IPS Controller-Pilot Datalink Communications (CPDLC). AVLC INFO field is the fragmentation unit."
+    },
+    {
+      "name": "ADS-B-1090ES",
+      "max_payload_bytes": 7,
+      "net_bitrate_bps": 1000000.0,
+      "one_way_latency_ms": 50.0,
+      "standard": "RTCA DO-260C",
+      "category": "broadcast",
+      "notes": "Each Extended Squitter carries a 56-bit ADS-B Message Field. Any cryptographic object that does not fit in 7 bytes must be stitched across many squitters, breaking the 'one frame, one fact' broadcast model."
+    },
+    {
+      "name": "LDACS",
+      "max_payload_bytes": 1500,
+      "net_bitrate_bps": 500000.0,
+      "one_way_latency_ms": 100.0,
+      "standard": "EUROCAE ED-228 / ICAO L-DACS",
+      "category": "wideband",
+      "notes": "Next-generation L-band digital aeronautical communications system. PHY supports ~1 Mbps shared; ~0.5 Mbps net per user is a reasonable budget for a single CPDLC session."
+    },
+    {
+      "name": "SATCOM-Classic-Aero",
+      "max_payload_bytes": 1960,
+      "net_bitrate_bps": 10500.0,
+      "one_way_latency_ms": 270.0,
+      "standard": "ARINC 781 (Inmarsat Classic Aero-H+)",
+      "category": "satellite",
+      "notes": "Geostationary; one-way latency of ~270 ms is propagation-bound. Packet-mode data session, typical message ceiling around 2 KB."
+    },
+    {
+      "name": "AeroMACS",
+      "max_payload_bytes": 2048,
+      "net_bitrate_bps": 9000000.0,
+      "one_way_latency_ms": 20.0,
+      "standard": "RTCA DO-345 / IEEE 802.16e profile",
+      "category": "wideband",
+      "notes": "Airport-surface wideband. Effectively unconstrained for PQC from a sizing standpoint; included as the upper-bound reference case."
+    }
+  ],
+  "kem": {
+    "results": [
+      {
+        "name": "ML-KEM-512",
+        "family": "ML-KEM",
+        "nist_level": 1,
+        "pq": true,
+        "notes": "NIST FIPS 203 (CRYSTALS-Kyber)",
+        "public_key_bytes": 800,
+        "secret_key_bytes": 1632,
+        "ciphertext_bytes": 768,
+        "shared_secret_bytes": 32,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 480.55,
+          "mad_us": 18.5,
+          "min_us": 443.9,
+          "max_us": 822.8,
+          "ops_per_sec": 2080.948912704193
+        },
+        "encaps": {
+          "iterations": 30,
+          "median_us": 815.05,
+          "mad_us": 30.69999999999999,
+          "min_us": 780.7,
+          "max_us": 1049.6,
+          "ops_per_sec": 1226.9185939512913
+        },
+        "decaps": {
+          "iterations": 30,
+          "median_us": 609.4000000000001,
+          "mad_us": 18.5,
+          "min_us": 565.4,
+          "max_us": 888.0,
+          "ops_per_sec": 1640.9583196586805
+        }
+      },
+      {
+        "name": "ML-KEM-768",
+        "family": "ML-KEM",
+        "nist_level": 3,
+        "pq": true,
+        "notes": "NIST FIPS 203 (CRYSTALS-Kyber)",
+        "public_key_bytes": 1184,
+        "secret_key_bytes": 2400,
+        "ciphertext_bytes": 1088,
+        "shared_secret_bytes": 32,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 491.5,
+          "mad_us": 21.55000000000001,
+          "min_us": 456.5,
+          "max_us": 641.0,
+          "ops_per_sec": 2034.587995930824
+        },
+        "encaps": {
+          "iterations": 30,
+          "median_us": 825.2,
+          "mad_us": 25.250000000000057,
+          "min_us": 779.1,
+          "max_us": 1070.0,
+          "ops_per_sec": 1211.827435773146
+        },
+        "decaps": {
+          "iterations": 30,
+          "median_us": 618.6500000000001,
+          "mad_us": 14.950000000000102,
+          "min_us": 587.2,
+          "max_us": 964.5,
+          "ops_per_sec": 1616.4228562191868
+        }
+      },
+      {
+        "name": "ML-KEM-1024",
+        "family": "ML-KEM",
+        "nist_level": 5,
+        "pq": true,
+        "notes": "NIST FIPS 203 (CRYSTALS-Kyber)",
+        "public_key_bytes": 1568,
+        "secret_key_bytes": 3168,
+        "ciphertext_bytes": 1568,
+        "shared_secret_bytes": 32,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 539.45,
+          "mad_us": 21.90000000000009,
+          "min_us": 495.6,
+          "max_us": 775.7,
+          "ops_per_sec": 1853.7399202891834
+        },
+        "encaps": {
+          "iterations": 30,
+          "median_us": 860.55,
+          "mad_us": 10.800000000000011,
+          "min_us": 830.4,
+          "max_us": 1126.0,
+          "ops_per_sec": 1162.0475277438848
+        },
+        "decaps": {
+          "iterations": 30,
+          "median_us": 652.8,
+          "mad_us": 18.599999999999966,
+          "min_us": 618.5,
+          "max_us": 1047.5,
+          "ops_per_sec": 1531.8627450980393
+        }
+      }
+    ],
+    "fit_matrix": [
+      {
+        "algorithm": "ML-KEM-512",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 800,
+        "max_payload_bytes": 220,
+        "fragments": 4,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 20226.666666666668,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-KEM-512",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 800,
+        "max_payload_bytes": 1023,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 1998.2222222222222,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-512",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 800,
+        "max_payload_bytes": 7,
+        "fragments": 115,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 11362.544,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "ML-KEM-512",
+        "datalink": "LDACS",
+        "wire_bytes": 800,
+        "max_payload_bytes": 1500,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 225.088,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-512",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 800,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 1734.666666666667,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-512",
+        "datalink": "AeroMACS",
+        "wire_bytes": 800,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 41.39377777777778,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-768",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 1184,
+        "max_payload_bytes": 220,
+        "fragments": 6,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 27073.333333333332,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "ML-KEM-768",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 1184,
+        "max_payload_bytes": 1023,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 5377.015873015873,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-KEM-768",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 1184,
+        "max_payload_bytes": 7,
+        "fragments": 170,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 16418.176,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "ML-KEM-768",
+        "datalink": "LDACS",
+        "wire_bytes": 1184,
+        "max_payload_bytes": 1500,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 236.352,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-768",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 1184,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 2271.0476190476193,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-768",
+        "datalink": "AeroMACS",
+        "wire_bytes": 1184,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 42.019555555555556,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-1024",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 1568,
+        "max_payload_bytes": 220,
+        "fragments": 8,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 37453.333333333336,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "ML-KEM-1024",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 1568,
+        "max_payload_bytes": 1023,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 5596.444444444444,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-KEM-1024",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 1568,
+        "max_payload_bytes": 7,
+        "fragments": 224,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 22525.088,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "ML-KEM-1024",
+        "datalink": "LDACS",
+        "wire_bytes": 1568,
+        "max_payload_bytes": 1500,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "handshake_airtime_ms": 650.1759999999999,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-KEM-1024",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 1568,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 2929.3333333333335,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ML-KEM-1024",
+        "datalink": "AeroMACS",
+        "wire_bytes": 1568,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "handshake_airtime_ms": 42.78755555555556,
+        "verdict": "OK"
+      }
+    ]
+  },
+  "signatures": {
+    "results": [
+      {
+        "name": "ML-DSA-44",
+        "family": "ML-DSA",
+        "nist_level": 2,
+        "pq": true,
+        "notes": "NIST FIPS 204 (CRYSTALS-Dilithium)",
+        "message_bytes": 32,
+        "public_key_bytes": 1312,
+        "secret_key_bytes": 2560,
+        "signature_bytes": 2420,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 547.75,
+          "mad_us": 24.399999999999977,
+          "min_us": 511.3,
+          "max_us": 883.3,
+          "ops_per_sec": 1825.6503879507075
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 1073.45,
+          "mad_us": 94.70000000000005,
+          "min_us": 923.9,
+          "max_us": 1744.7,
+          "ops_per_sec": 931.5757603987144
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 454.75,
+          "mad_us": 18.25,
+          "min_us": 421.4,
+          "max_us": 608.4,
+          "ops_per_sec": 2199.010445299615
+        }
+      },
+      {
+        "name": "ML-DSA-65",
+        "family": "ML-DSA",
+        "nist_level": 3,
+        "pq": true,
+        "notes": "NIST FIPS 204 (CRYSTALS-Dilithium)",
+        "message_bytes": 32,
+        "public_key_bytes": 1952,
+        "secret_key_bytes": 4032,
+        "signature_bytes": 3309,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 622.8499999999999,
+          "mad_us": 25.80000000000001,
+          "min_us": 575.8,
+          "max_us": 788.2,
+          "ops_per_sec": 1605.5229991169626
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 1212.75,
+          "mad_us": 136.60000000000002,
+          "min_us": 976.4,
+          "max_us": 1975.8,
+          "ops_per_sec": 824.5722531436817
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 494.5,
+          "mad_us": 15.150000000000006,
+          "min_us": 464.6,
+          "max_us": 527.7,
+          "ops_per_sec": 2022.2446916076844
+        }
+      },
+      {
+        "name": "ML-DSA-87",
+        "family": "ML-DSA",
+        "nist_level": 5,
+        "pq": true,
+        "notes": "NIST FIPS 204 (CRYSTALS-Dilithium)",
+        "message_bytes": 32,
+        "public_key_bytes": 2592,
+        "secret_key_bytes": 4896,
+        "signature_bytes": 4627,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 655.25,
+          "mad_us": 13.600000000000023,
+          "min_us": 633.7,
+          "max_us": 698.8,
+          "ops_per_sec": 1526.1350629530714
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 1246.85,
+          "mad_us": 139.45000000000016,
+          "min_us": 1082.2,
+          "max_us": 3163.2,
+          "ops_per_sec": 802.02109315475
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 590.45,
+          "mad_us": 24.30000000000001,
+          "min_us": 551.8,
+          "max_us": 897.3,
+          "ops_per_sec": 1693.6235074942838
+        }
+      },
+      {
+        "name": "Falcon-512",
+        "family": "Falcon",
+        "nist_level": 1,
+        "pq": true,
+        "notes": "Upcoming NIST FN-DSA (FIPS 206 draft).",
+        "message_bytes": 32,
+        "public_key_bytes": 897,
+        "secret_key_bytes": 1281,
+        "signature_bytes": 658,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 5543.6,
+          "mad_us": 634.4500000000003,
+          "min_us": 4447.2,
+          "max_us": 10527.9,
+          "ops_per_sec": 180.38819539649324
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 1057.25,
+          "mad_us": 18.75,
+          "min_us": 1023.1,
+          "max_us": 1243.9,
+          "ops_per_sec": 945.8500827618823
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 424.35,
+          "mad_us": 14.5,
+          "min_us": 387.4,
+          "max_us": 659.4,
+          "ops_per_sec": 2356.5453045834806
+        }
+      },
+      {
+        "name": "Falcon-1024",
+        "family": "Falcon",
+        "nist_level": 5,
+        "pq": true,
+        "notes": "Upcoming NIST FN-DSA (FIPS 206 draft).",
+        "message_bytes": 32,
+        "public_key_bytes": 1793,
+        "secret_key_bytes": 2305,
+        "signature_bytes": 1269,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 15005.45,
+          "mad_us": 932.6500000000005,
+          "min_us": 13161.5,
+          "max_us": 23476.4,
+          "ops_per_sec": 66.64245324198875
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 1244.0,
+          "mad_us": 26.950000000000045,
+          "min_us": 1210.0,
+          "max_us": 3424.3,
+          "ops_per_sec": 803.8585209003215
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 436.35,
+          "mad_us": 16.100000000000023,
+          "min_us": 414.7,
+          "max_us": 939.7,
+          "ops_per_sec": 2291.7382834880254
+        }
+      },
+      {
+        "name": "SLH-DSA-SHA2-128s",
+        "family": "SLH-DSA",
+        "nist_level": 1,
+        "pq": true,
+        "notes": "FIPS 205, small variant",
+        "message_bytes": 32,
+        "public_key_bytes": 64,
+        "secret_key_bytes": 128,
+        "signature_bytes": 29792,
+        "keygen": {
+          "iterations": 3,
+          "median_us": 26863.5,
+          "mad_us": 349.2000000000007,
+          "min_us": 26507.7,
+          "max_us": 27212.7,
+          "ops_per_sec": 37.225231261749215
+        },
+        "sign": {
+          "iterations": 3,
+          "median_us": 314628.9,
+          "mad_us": 3059.7999999999884,
+          "min_us": 311392.6,
+          "max_us": 317688.7,
+          "ops_per_sec": 3.178347570741276
+        },
+        "verify": {
+          "iterations": 3,
+          "median_us": 997.9,
+          "mad_us": 4.2999999999999545,
+          "min_us": 993.6,
+          "max_us": 1175.7,
+          "ops_per_sec": 1002.1044192804891
+        }
+      },
+      {
+        "name": "SLH-DSA-SHA2-128f",
+        "family": "SLH-DSA",
+        "nist_level": 1,
+        "pq": true,
+        "notes": "FIPS 205, fast variant",
+        "message_bytes": 32,
+        "public_key_bytes": 64,
+        "secret_key_bytes": 128,
+        "signature_bytes": 49856,
+        "keygen": {
+          "iterations": 3,
+          "median_us": 2155.9,
+          "mad_us": 9.300000000000182,
+          "min_us": 2146.6,
+          "max_us": 2317.7,
+          "ops_per_sec": 463.84340646597707
+        },
+        "sign": {
+          "iterations": 3,
+          "median_us": 34402.6,
+          "mad_us": 42.5,
+          "min_us": 34031.1,
+          "max_us": 34445.1,
+          "ops_per_sec": 29.067570474324615
+        },
+        "verify": {
+          "iterations": 3,
+          "median_us": 1535.2,
+          "mad_us": 48.799999999999955,
+          "min_us": 1486.4,
+          "max_us": 1629.7,
+          "ops_per_sec": 651.3809275664408
+        }
+      },
+      {
+        "name": "RSA-2048",
+        "family": "RSA",
+        "nist_level": 0,
+        "pq": false,
+        "notes": "Classical baseline; broken by Shor's algorithm.",
+        "message_bytes": 32,
+        "public_key_bytes": 294,
+        "secret_key_bytes": 1218,
+        "signature_bytes": 256,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 29538.35,
+          "mad_us": 11388.249999999998,
+          "min_us": 8729.1,
+          "max_us": 131092.1,
+          "ops_per_sec": 33.8542945018933
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 27539.25,
+          "mad_us": 151.14999999999964,
+          "min_us": 27171.0,
+          "max_us": 28746.5,
+          "ops_per_sec": 36.31180950824732
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 29.75,
+          "mad_us": 0.3500000000000014,
+          "min_us": 29.3,
+          "max_us": 36.5,
+          "ops_per_sec": 33613.445378151264
+        }
+      },
+      {
+        "name": "ECDSA-P256",
+        "family": "ECDSA",
+        "nist_level": 0,
+        "pq": false,
+        "notes": "Classical baseline; broken by Shor's algorithm.",
+        "message_bytes": 32,
+        "public_key_bytes": 91,
+        "secret_key_bytes": 138,
+        "signature_bytes": 71,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 32.75,
+          "mad_us": 0.1999999999999993,
+          "min_us": 32.3,
+          "max_us": 41.2,
+          "ops_per_sec": 30534.351145038167
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 52.8,
+          "mad_us": 0.40000000000000213,
+          "min_us": 52.0,
+          "max_us": 76.2,
+          "ops_per_sec": 18939.39393939394
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 72.6,
+          "mad_us": 0.25,
+          "min_us": 72.1,
+          "max_us": 98.6,
+          "ops_per_sec": 13774.104683195594
+        }
+      },
+      {
+        "name": "Ed25519",
+        "family": "EdDSA",
+        "nist_level": 0,
+        "pq": false,
+        "notes": "Classical baseline; broken by Shor's algorithm.",
+        "message_bytes": 32,
+        "public_key_bytes": 32,
+        "secret_key_bytes": 32,
+        "signature_bytes": 64,
+        "keygen": {
+          "iterations": 30,
+          "median_us": 30.7,
+          "mad_us": 0.09999999999999787,
+          "min_us": 30.4,
+          "max_us": 34.9,
+          "ops_per_sec": 32573.289902280132
+        },
+        "sign": {
+          "iterations": 30,
+          "median_us": 52.849999999999994,
+          "mad_us": 0.14999999999999147,
+          "min_us": 52.6,
+          "max_us": 61.7,
+          "ops_per_sec": 18921.47587511826
+        },
+        "verify": {
+          "iterations": 30,
+          "median_us": 75.8,
+          "mad_us": 0.29999999999999716,
+          "min_us": 75.3,
+          "max_us": 81.4,
+          "ops_per_sec": 13192.612137203167
+        }
+      }
+    ],
+    "fit_matrix": [
+      {
+        "algorithm": "ML-DSA-44",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 2420,
+        "max_payload_bytes": 220,
+        "fragments": 11,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 26066.666666666664,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "ML-DSA-44",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 2420,
+        "max_payload_bytes": 1023,
+        "fragments": 3,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 3814.603174603175,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-44",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 2420,
+        "max_payload_bytes": 7,
+        "fragments": 346,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 17369.36,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "ML-DSA-44",
+        "datalink": "LDACS",
+        "wire_bytes": 2420,
+        "max_payload_bytes": 1500,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 338.72,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-44",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 2420,
+        "max_payload_bytes": 1960,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 2653.809523809524,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-44",
+        "datalink": "AeroMACS",
+        "wire_bytes": 2420,
+        "max_payload_bytes": 2048,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 62.151111111111106,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-65",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 3309,
+        "max_payload_bytes": 220,
+        "fragments": 16,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 36530.0,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "ML-DSA-65",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 3309,
+        "max_payload_bytes": 1023,
+        "fragments": 4,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 4840.380952380952,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-65",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 3309,
+        "max_payload_bytes": 7,
+        "fragments": 473,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 23726.472,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "ML-DSA-65",
+        "datalink": "LDACS",
+        "wire_bytes": 3309,
+        "max_payload_bytes": 1500,
+        "fragments": 3,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 452.944,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-65",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 3309,
+        "max_payload_bytes": 1960,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 3331.142857142857,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-65",
+        "datalink": "AeroMACS",
+        "wire_bytes": 3309,
+        "max_payload_bytes": 2048,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 62.94133333333333,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-87",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 4627,
+        "max_payload_bytes": 220,
+        "fragments": 22,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 49923.33333333333,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "ML-DSA-87",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 4627,
+        "max_payload_bytes": 1023,
+        "fragments": 5,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 5975.111111111111,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "ML-DSA-87",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 4627,
+        "max_payload_bytes": 7,
+        "fragments": 661,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 33137.016,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "ML-DSA-87",
+        "datalink": "LDACS",
+        "wire_bytes": 4627,
+        "max_payload_bytes": 1500,
+        "fragments": 4,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 574.0319999999999,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-87",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 4627,
+        "max_payload_bytes": 1960,
+        "fragments": 3,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 4605.333333333334,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "ML-DSA-87",
+        "datalink": "AeroMACS",
+        "wire_bytes": 4627,
+        "max_payload_bytes": 2048,
+        "fragments": 3,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 84.11288888888889,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "Falcon-512",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 658,
+        "max_payload_bytes": 220,
+        "fragments": 3,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 8193.333333333332,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "Falcon-512",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 658,
+        "max_payload_bytes": 1023,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 967.1111111111111,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Falcon-512",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 658,
+        "max_payload_bytes": 7,
+        "fragments": 94,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 4755.264,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "Falcon-512",
+        "datalink": "LDACS",
+        "wire_bytes": 658,
+        "max_payload_bytes": 1500,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 110.52799999999999,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Falcon-512",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 658,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 771.3333333333333,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Falcon-512",
+        "datalink": "AeroMACS",
+        "wire_bytes": 658,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 20.584888888888887,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Falcon-1024",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 1269,
+        "max_payload_bytes": 220,
+        "fragments": 6,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 14730.0,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "Falcon-1024",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 1269,
+        "max_payload_bytes": 1023,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 2722.285714285714,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "Falcon-1024",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 1269,
+        "max_payload_bytes": 7,
+        "fragments": 182,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 9160.152,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "Falcon-1024",
+        "datalink": "LDACS",
+        "wire_bytes": 1269,
+        "max_payload_bytes": 1500,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 120.304,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Falcon-1024",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 1269,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 1236.857142857143,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Falcon-1024",
+        "datalink": "AeroMACS",
+        "wire_bytes": 1269,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 21.128,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128s",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 29792,
+        "max_payload_bytes": 220,
+        "fragments": 136,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 304806.6666666667,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128s",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 29792,
+        "max_payload_bytes": 1023,
+        "fragments": 30,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 32366.222222222223,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128s",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 29792,
+        "max_payload_bytes": 7,
+        "fragments": 4256,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 213088.336,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128s",
+        "datalink": "LDACS",
+        "wire_bytes": 29792,
+        "max_payload_bytes": 1500,
+        "fragments": 20,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 2576.672,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128s",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 29792,
+        "max_payload_bytes": 1960,
+        "fragments": 16,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 27288.666666666668,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128s",
+        "datalink": "AeroMACS",
+        "wire_bytes": 29792,
+        "max_payload_bytes": 2048,
+        "fragments": 15,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 346.4817777777778,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128f",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 49856,
+        "max_payload_bytes": 220,
+        "fragments": 227,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 508186.6666666666,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128f",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 49856,
+        "max_payload_bytes": 1023,
+        "fragments": 49,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 52661.84126984127,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128f",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 49856,
+        "max_payload_bytes": 7,
+        "fragments": 7123,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 356598.848,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128f",
+        "datalink": "LDACS",
+        "wire_bytes": 49856,
+        "max_payload_bytes": 1500,
+        "fragments": 34,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 4297.696,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128f",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 49856,
+        "max_payload_bytes": 1960,
+        "fragments": 26,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 45275.52380952381,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "SLH-DSA-SHA2-128f",
+        "datalink": "AeroMACS",
+        "wire_bytes": 49856,
+        "max_payload_bytes": 2048,
+        "fragments": 25,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 564.3164444444444,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "RSA-2048",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 256,
+        "max_payload_bytes": 220,
+        "fragments": 2,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 5353.333333333333,
+        "verdict": "MARGINAL"
+      },
+      {
+        "algorithm": "RSA-2048",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 256,
+        "max_payload_bytes": 1023,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 865.015873015873,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "RSA-2048",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 256,
+        "max_payload_bytes": 7,
+        "fragments": 37,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 1902.048,
+        "verdict": "INFEASIBLE"
+      },
+      {
+        "algorithm": "RSA-2048",
+        "datalink": "LDACS",
+        "wire_bytes": 256,
+        "max_payload_bytes": 1500,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 104.096,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "RSA-2048",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 256,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 465.04761904761904,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "RSA-2048",
+        "datalink": "AeroMACS",
+        "wire_bytes": 256,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 20.227555555555554,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ECDSA-P256",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 71,
+        "max_payload_bytes": 220,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 1736.6666666666667,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ECDSA-P256",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 71,
+        "max_payload_bytes": 1023,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 818.031746031746,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ECDSA-P256",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 71,
+        "max_payload_bytes": 7,
+        "fragments": 11,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 600.568,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "ECDSA-P256",
+        "datalink": "LDACS",
+        "wire_bytes": 71,
+        "max_payload_bytes": 1500,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 101.136,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ECDSA-P256",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 71,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 324.0952380952381,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "ECDSA-P256",
+        "datalink": "AeroMACS",
+        "wire_bytes": 71,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 20.063111111111112,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Ed25519",
+        "datalink": "ACARS-VHF",
+        "wire_bytes": 64,
+        "max_payload_bytes": 220,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 1713.3333333333333,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Ed25519",
+        "datalink": "VDL-Mode-2",
+        "wire_bytes": 64,
+        "max_payload_bytes": 1023,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 816.2539682539682,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Ed25519",
+        "datalink": "ADS-B-1090ES",
+        "wire_bytes": 64,
+        "max_payload_bytes": 7,
+        "fragments": 10,
+        "fits_single_frame": false,
+        "transmit_airtime_ms": 550.512,
+        "verdict": "FRAGMENTED"
+      },
+      {
+        "algorithm": "Ed25519",
+        "datalink": "LDACS",
+        "wire_bytes": 64,
+        "max_payload_bytes": 1500,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 101.024,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Ed25519",
+        "datalink": "SATCOM-Classic-Aero",
+        "wire_bytes": 64,
+        "max_payload_bytes": 1960,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 318.76190476190476,
+        "verdict": "OK"
+      },
+      {
+        "algorithm": "Ed25519",
+        "datalink": "AeroMACS",
+        "wire_bytes": 64,
+        "max_payload_bytes": 2048,
+        "fragments": 1,
+        "fits_single_frame": true,
+        "transmit_airtime_ms": 20.05688888888889,
+        "verdict": "OK"
+      }
+    ]
+  }
+}

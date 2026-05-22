@@ -1,0 +1,4 @@
+quantcrypt>=1.0.1
+cryptography>=42.0.0
+matplotlib>=3.8.0
+rich>=13.7.0
