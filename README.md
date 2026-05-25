@@ -199,8 +199,7 @@ the highlights are:
 
 ## Author
 
-**Thirukumaran Senthilkumaran** — built as a portfolio piece for a PhD
-application in **aviation cybersecurity**.
+**Thirukumaran Senthilkumaran** — open-source research prototype for analysing how post-quantum cryptographic primitives perform under aviation datalink constraints.
 GitHub: [@Thirukumaran-Senthilkumaran](https://github.com/Thirukumaran-Senthilkumaran)
 Feedback, issues and pull requests are welcome.
 
